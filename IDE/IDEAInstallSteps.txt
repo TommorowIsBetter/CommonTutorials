@@ -1,0 +1,8 @@
+1.到idea官网下载收费的旗舰版（ultimate editon）,然后和普通软件一样下载安装选择指定的安装目录。到了勾选的界面，我这里是默认的，什么也没有勾选。
+
+2.下载剖解的补丁jar包到bin目录下面，下载在http://idea.lanyus.com/可以下载。然后修改idea64.exe.vmoptions
+在最后一行添加
+-javaagent:E:\SoftWareInstallationPath\IntelliJ IDEA 2018.3.5\bin\JetbrainsCrack-2.10-release-enc.jar
+
+3.打开软件填写active code,这个网站http://idea.lanyus.com/获取注册码填到activecode里面去即可。hosts文件要添加：0.0.0.0 account.jetbrains.com，这才可以激活成功。
+

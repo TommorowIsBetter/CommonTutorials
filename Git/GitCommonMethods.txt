@@ -1,0 +1,41 @@
+1.显示用户名
+git config user.name
+2.显示邮箱地址
+git config user.email
+3.配置个人的用户名称和电子邮件地址
+git config --global user.name "runoob"
+git config --global user.email test@runoob.com
+
+
+上传本地文件到GitHub
+1.git init
+2.git add .
+3.git status
+4.git commit -m "Initial commit"
+5.git remote add origin https://github.com/.....git
+6.git push -u origin master      //使用-u创建默认分支，下次直接git push即可
+tip:执行git push -u origin master会报错，可以先把readme文件下载下来
+执行：git pull --rebase origin master
+然后在执行：git push -u origin master. .
+后面如果对工程进行修改，然后再次提交
+依次执行：
+git add .
+git status
+git commit -m "Second commit"
+git push
+即可
+
+git放弃本地修改，强制拉取更新
+1.git fetch --all  //只是下载代码到本地，不进行合并操作
+2.git reset --hard origin/master  //把HEAD指向最新下载的版本
+
+
+当远端仓库更新时候，本地使用pull命令更新
+1.git pull
+使用这个命令的时候，本地仓库之前删除的文件不会再出现，所以会出现本地仓库与远程仓库不完全相同的情况。即本地只会添加远程新的内容。
+
+
+如果想保留刚才本地修改的代码，并把git服务器上的代码pull到本地（本地刚才修过的代码将会被暂时封存起来）
+1.git stash
+2.git pull origin master
+3.git stash pop
