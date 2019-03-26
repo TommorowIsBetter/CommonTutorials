@@ -1,0 +1,81 @@
+1.查看MongoDB服务是否启动
+ps -aux | grep mongodb
+
+2.因为MongoDB已经配置好了环境变量，所以在命令行界面直接输入#mongo即可进入MongoDB系统。输入#exit可以退出MongoDB系统
+
+3.查询MongoDB的所有数据库命令为#show dbs执行#db可以显示当前数据库对象或者集合,使用#use local可以切换到一个指定的数据库，这里就是切换到local数据库下
+
+4.创建数据库，#use DATABASE_NAME如果数据库不存在，则创建数据库，否则切换到指定数据库。刚刚创建的数据库使用# show dbs 会不显示，可以向数据库插入一些数据，然后就可以通过：#show dbs可以显示了
+
+5.删除数据库，#db.dropDatabase()要使用这条命令先使用#use runoob(要删除的数据库)然后在用#db.dropDatabase()就可以删除了runoob
+
+6.创建集合。# db.createCollection(name, options) name:要创建的集合名称。options:可选参数，指定有关内存大小及索引的选项。 
+# use test
+# db.createCollection("runoob")
+# show collections
+MongoDB中，如果你不需要创建集合。当你插入一些文档时，MongoDB会自动创建集合。
+
+7.删除集合。db.collection.drop()
+# use mydb
+# show collections
+# db.mycol2.drop() 删除集合mycol2
+
+8.插入文档。db.COLLECTION_NAME.insert(document)存储在MongoDB中的runoob数据库的col集合中
+# db.col.insert({title: 'MongoDB教程',
+		links:100
+  })
+# db.col.find() //查询数据
+
+9.MongoDB使用update()和save()方法来更新集合中的文档。
+>db.col.update({'title':'MongoDB 教程'},{$set:{'title':'MongoDB'}})
+>db.col.find().pretty()
+{
+        "_id" : ObjectId("56064f89ade2f21f36b03136"),
+        "title" : "MongoDB",
+        "description" : "MongoDB 是一个 Nosql 数据库",
+        "by" : "菜鸟教程",
+        "url" : "http://www.runoob.com",
+        "tags" : [
+                "mongodb",
+                "database",
+                "NoSQL"
+        ],
+        "likes" : 100
+}
+>
+实例中我们替换了 _id 为 56064f89ade2f21f36b03136 的文档数据
+>db.col.save({
+    "_id" : ObjectId("56064f89ade2f21f36b03136"),
+    "title" : "MongoDB",
+    "description" : "MongoDB 是一个 Nosql 数据库",
+    "by" : "Runoob",
+    "url" : "http://www.runoob.com",
+    "tags" : [
+            "mongodb",
+            "NoSQL"
+    ],
+    "likes" : 110
+})
+
+10. 删除文档。
+>db.col.remove({'title':'MongoDB 教程'})
+WriteResult({ "nRemoved" : 2 })           # 删除了两条数据
+>db.col.find()
+
+ 
+11. 查询文档。db.collection.find(query, projection)
+> db.col.find().pretty()
+{
+        "_id" : ObjectId("56063f17ade2f21f36b03133"),
+        "title" : "MongoDB 教程",
+        "description" : "MongoDB 是一个 Nosql 数据库",
+        "by" : "菜鸟教程",
+        "url" : "http://www.runoob.com",
+        "tags" : [
+                "mongodb",
+                "database",
+                "NoSQL"
+        ],
+        "likes" : 100
+}
+pretty()方法以格式化的方式来显示所有文档。
