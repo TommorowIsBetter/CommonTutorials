@@ -1,0 +1,1 @@
+1. 如果是该工程第一次上传到GitHub,过程是VCS->Import into Version Control->Share project on Github.
